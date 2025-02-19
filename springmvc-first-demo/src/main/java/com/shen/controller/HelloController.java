@@ -11,4 +11,9 @@ public class HelloController {
         //返回视图名称(前缀和后缀已在web.xml中配置了)
         return "index";
     }
+
+    @RequestMapping("/target")
+    public String target() {
+        return "target";
+    }
 }
