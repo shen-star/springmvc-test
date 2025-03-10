@@ -9,5 +9,8 @@
 <a th:href="@{/hello/testRequestMapping}">测试@RequestMapping注解的位置</a><br>
 <a th:href="@{/hello/testValue1}">测试@RequestMapping注解的value属性-testValue1</a><br>
 <a th:href="@{/hello/testValue2}">测试@RequestMapping注解的value属性-testValue2</a><br>
+<form th:action="@{/hello/testMethod}" method="post">
+    <input type="submit" value="测试@RequestMapping注解的method属性-POST">
+</form>
 </body>
 </html>
