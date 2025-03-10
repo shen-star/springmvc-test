@@ -11,4 +11,9 @@ public class RequestMappingController {
         return "success";
     }
 
+    @RequestMapping(value = {"/testValue1", "/testValue2"})
+    public String testDifferValue() {
+        return "testvalue";
+    }
+
 }
