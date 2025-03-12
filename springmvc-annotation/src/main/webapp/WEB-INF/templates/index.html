@@ -15,5 +15,7 @@
 </form>
 <!--超链接是使用HTTP请求方式中的GET方式的请求，如果控制层的映射注解修改为POST请求方式则会报405异常方法不允许-->
 <a th:href="@{/hello/testGetMapping}">测试@GetMapping注解的->testGepMapping</a><br>
+<a th:href="@{/hello/testParams?username='sam'&password=123}">测试@RequestMapping注解的params属性-方式一->testParams</a><br>
+<a th:href="@{/hello/testParams(username='admin',password=123)}">测试@RequestMapping注解的params属性-方式二>testParams</a><br>
 </body>
 </html>

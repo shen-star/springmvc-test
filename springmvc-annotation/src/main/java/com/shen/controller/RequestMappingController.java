@@ -32,7 +32,20 @@ public class RequestMappingController {
      */
     @GetMapping(value = {"/testGetMapping"})
     public String testGetMappingIndex() {
-        return success();
+        return "success";
     }
+
+    /**
+     * -@RequestMapping的params属性
+     * "param"：要求请求映射所匹配的请求必须携带param请求参数
+     * "!param"：要求请求映射所匹配的请求必须不能携带param请求参数
+     * "param=value"：要求请求映射所匹配的请求必须携带param请求参数且param=value
+     * "param!=value"：要求请求映射所匹配的请求必须携带param请求参数但是param!=value
+     */
+    @RequestMapping(value = {"/testParams"}, method = {RequestMethod.GET, RequestMethod.POST}, params = {"username","password!=123456"})
+    public String testParams() {
+        return "success";
+    }
+
 
 }
