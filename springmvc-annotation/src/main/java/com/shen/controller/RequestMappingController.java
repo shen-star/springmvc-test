@@ -42,8 +42,13 @@ public class RequestMappingController {
      * "param=value"：要求请求映射所匹配的请求必须携带param请求参数且param=value
      * "param!=value"：要求请求映射所匹配的请求必须携带param请求参数但是param!=value
      */
-    @RequestMapping(value = {"/testParams"}, method = {RequestMethod.GET, RequestMethod.POST}, params = {"username","password!=123456"})
+    @RequestMapping(value = {"/testParams"}, method = {RequestMethod.GET, RequestMethod.POST}, params = {"username", "password!=123456"})
     public String testParams() {
+        return "success";
+    }
+
+    @RequestMapping(value = {"/testHeaders"}, method = {RequestMethod.GET, RequestMethod.POST}, headers = {"Host=localhost:8080"})
+    public String testHeaders() {
         return "success";
     }
 
