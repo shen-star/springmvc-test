@@ -2,6 +2,7 @@ package com.shen.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -63,6 +64,18 @@ public class RequestMappingController {
 //    @RequestMapping("/test/a*a/ant")
     @RequestMapping("/test/*/ant")
     public String testAnt() {
+        return "success";
+    }
+
+
+    /**
+     * SpringMVC路径中的占位符常用于RESTful风格中，当请求路径中将某些数据通过路径的方式传输到服务器中，
+     * 就可以在相应的@RequestMapping注解的value属性中通过占位符{xxx}表示传输的数据，在通过@PathVariable注解，
+     * 将占位符所表示的数据赋值给控制器方法的形参
+     */
+    @RequestMapping("/test/rest/{id}/{name}")
+    public String testRest(@PathVariable("id") Integer id, @PathVariable("name") String name) {
+        System.out.println("id:" + id + ",name:" + name);
         return "success";
     }
 
