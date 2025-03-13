@@ -52,5 +52,19 @@ public class RequestMappingController {
         return "success";
     }
 
+    /**
+     * springMVC支持ant风格
+     * ？：表示任意的单个字符
+     * *：表示任意的0个或多个字符
+     */
+    // /*/: 表示任意一层目录
+    // /*/*/: 表示任意两层目录
+//    @RequestMapping("/test/a?a/ant")
+//    @RequestMapping("/test/a*a/ant")
+    @RequestMapping("/test/*/ant")
+    public String testAnt() {
+        return "success";
+    }
+
 
 }
