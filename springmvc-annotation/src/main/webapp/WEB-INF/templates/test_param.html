@@ -8,6 +8,7 @@
 <h1>测试请求参数</h1>
 <a th:href="@{/param/testServletAPI(username='admin',password=123456)}">测试源生的ServletAPI获取请求参数</a><br>
 <a th:href="@{/param/testParam(username='admin',password=123456)}">测试通过控制器方法的形参获取请求参数</a><br>
+<hr>
 <form th:action="@{/param/testParam2}" method="get">
     用户名: <input type="text" name="username"><br>
     密码: <input type="password" name="password"><br>
@@ -17,8 +18,21 @@
     <input type="checkbox" name="hobby" value="c"> c <br>
     <input type="submit" value="测试通过控制器方法的形参获取请求参数">
 </form>
+<hr>
 <a th:href="@{/param/testRequestParam(user_name='admin',pass_word=123)}">测试@RequestParam注解</a><br>
 <a th:href="@{/param/testRequestHeader}">测试@RequestHeader注解</a><br>
 <a th:href="@{/param/testCookieValue}">测试@CookieValue注解</a><br>
+<hr>
+<form th:action="@{/param/testpojo}" method="post">
+    用户名: <input type="text" name="username"><br>
+    密码: <input type="password" name="password"><br>
+    性别:
+    <input type="radio" name="sex" value="男"> 男
+    <input type="radio" name="sex" value="女"> 女<br>
+    年龄: <input type="text" name="age"><br>
+    邮箱: <input type="text" name="email"><br>
+    <input type="submit" value="使用实体类接收请求参数">
+</form>
+<hr>
 </body>
 </html>

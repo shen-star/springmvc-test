@@ -1,5 +1,6 @@
 package com.shen.controller;
 
+import com.shen.entity.User;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -62,9 +63,21 @@ public class ParamController {
         return "success";
     }
 
+    /**
+     * @CookieValue是将cookie数据和控制器方法的形参创建映射关系,该注解与@RequestParam注解类似同样有四个属性 。
+     */
     @RequestMapping("/testCookieValue")
     public String testCookieValue(@CookieValue(name = "test", required = false, defaultValue = "123456") String test) {
         System.out.println("cookie: " + test);
+        return "success";
+    }
+
+    /**
+     * 当请求参数名与一个实体类中属性名相同时，可以使用一个POJO(简单java对象)，即一个实体类来获取所有的请求参数
+     */
+    @RequestMapping("/testpojo")
+    public String testpojo(User user) {
+        System.out.println(user);
         return "success";
     }
 }
