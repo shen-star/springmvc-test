@@ -3,6 +3,7 @@ package com.shen.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 
@@ -32,6 +33,19 @@ public class ParamController {
     @RequestMapping("/testParam2")
     public String testServletAPI(String username, String password, String[] hobby) {
         System.out.println("username : " + username + ",password : " + password + ",hobby : " + Arrays.toString(hobby));
+        return "success";
+    }
+
+    /**
+     * @RequestParam是将请求参数和控制器方法的形参创建映射关系
+     * 该注解的属性有四个
+     * value|name :为指定为形参赋值的请求参数的参数名，name属性与value属性的含义相同，更推荐使用name属性，因为更符合语义
+     * required: 设置是否必须传输此请求参数，默认为true
+     * defaultValue: 不管required属性值为true或false，当指定的请求参数咩有传输或传输为空字符串时，则使用默认值为形参赋值
+     */
+    @RequestMapping("/testRequestParam")
+    public String testRequestParam(@RequestParam(name = "user_name") String username, @RequestParam(name = "pass_word", required = false, defaultValue = "123456") String password) {
+        System.out.println("username : " + username + ",password : " + password);
         return "success";
     }
 }
