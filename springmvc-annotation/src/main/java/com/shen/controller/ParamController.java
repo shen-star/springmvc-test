@@ -2,6 +2,7 @@ package com.shen.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,6 +59,12 @@ public class ParamController {
     @RequestMapping("/testRequestHeader")
     public String testRequestHeader(@RequestHeader(name = "Host") String host, @RequestHeader(name = "test_value", required = true, defaultValue = "test") String testValue) {
         System.out.println("host: " + host + ", test_value:" + testValue);
+        return "success";
+    }
+
+    @RequestMapping("/testCookieValue")
+    public String testCookieValue(@CookieValue(name = "test", required = false, defaultValue = "123456") String test) {
+        System.out.println("cookie: " + test);
         return "success";
     }
 }
