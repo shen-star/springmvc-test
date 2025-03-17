@@ -3,6 +3,32 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <!-- 修改字符乱码问题，需要统一编码设置
+    1.修改tomcat配置文件，server.xml文件中，<Connector>标签中包含URIEncoding="UTF-8" 可以解决get请求乱码问题
+    2.IDEA中打开tomcat配置页面，在VM options中添加-Dfile.encoding=UTF-8,在startup/connection页面中勾选"Pass environment Variables"，并添加环境变量JAVA_TOOL_OPTIONS值为-Dfile.encoding=UTF-8。
+    3.修改tomcat中conf/logging.properties文件，将java.util.logging.ConsoleHandler.encoding = UTF-8修改为GBK(由于windows系统默认是GBK)，或者确保编码设置为UTF-8。
+    4.在IDEA中File Encodings中将Global Encoding,Project Encoding,Default encoding for properties files都设置为UTF-8
+    5.在web.xml中配置springMVC提供的编码过滤器,配置encoding为utf-8，强制修改返回值编码为true,
+    -->
+
+    <!--配置springMVC的编码过滤器-->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <!--设置初始化参数-->
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceResponseEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <!--注册前端控制器DispatcherServlet-->
     <servlet>
         <servlet-name>DispatcherServlet</servlet-name>
