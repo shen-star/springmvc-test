@@ -12,6 +12,7 @@
     <modules>
         <module>springmvc-first-demo</module>
         <module>springmvc-annotation</module>
+        <module>springmvc-domain-object</module>
     </modules>
 
     <properties>
