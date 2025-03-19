@@ -2,6 +2,7 @@ package com.shen.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,5 +27,11 @@ public class ScopeController {
         mav.addObject("testModelAndView", "this is test scope by ModelAndView");
         mav.setViewName("success");
         return mav;
+    }
+
+    @RequestMapping("/testModel")
+    public String testModel(Model model) {
+        model.addAttribute("testModel", "this is test scope by Model");
+        return "success";
     }
 }
