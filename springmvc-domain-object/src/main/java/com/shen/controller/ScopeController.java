@@ -1,6 +1,7 @@
 package com.shen.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -52,6 +53,12 @@ public class ScopeController {
         System.out.println(modelMap.getClass().getName());
         //打断点会观察到DispatcherServlet类在执行ha.handle(processedRequest, response, mappedHandler.getHandler());方法后会返回ModelAndView
         //即每一个请求在结束都会返回ModelAndView，Model中是域对象中的数据，view是返回的页面
+        return "success";
+    }
+
+    @RequestMapping("/testSessionByServletAPI")
+    public String testSessionByServletAPI(HttpSession httpSession) {
+        httpSession.setAttribute("testSessionScope","this is test session scope by Servlet API");
         return "success";
     }
 }
