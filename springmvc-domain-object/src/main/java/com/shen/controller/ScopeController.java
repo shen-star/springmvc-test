@@ -1,5 +1,6 @@
 package com.shen.controller;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -58,7 +59,14 @@ public class ScopeController {
 
     @RequestMapping("/testSessionByServletAPI")
     public String testSessionByServletAPI(HttpSession httpSession) {
-        httpSession.setAttribute("testSessionScope","this is test session scope by Servlet API");
+        httpSession.setAttribute("testSessionScope", "this is test session scope by Servlet API");
+        return "success";
+    }
+
+    @RequestMapping("/testApplication")
+    public String testApplication(HttpSession httpSession) {
+        ServletContext application = httpSession.getServletContext();
+        application.setAttribute("testApplicationScope", "this is test application scope");
         return "success";
     }
 }
