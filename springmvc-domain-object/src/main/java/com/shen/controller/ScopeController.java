@@ -50,6 +50,8 @@ public class ScopeController {
     public String testModelMap(ModelMap modelMap) {
         modelMap.addAttribute("testModelMap", "this is test scope by ModelMap");
         System.out.println(modelMap.getClass().getName());
+        //打断点会观察到DispatcherServlet类在执行ha.handle(processedRequest, response, mappedHandler.getHandler());方法后会返回ModelAndView
+        //即每一个请求在结束都会返回ModelAndView，Model中是域对象中的数据，view是返回的页面
         return "success";
     }
 }
