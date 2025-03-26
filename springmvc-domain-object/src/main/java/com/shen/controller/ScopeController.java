@@ -35,18 +35,21 @@ public class ScopeController {
     @RequestMapping("/testModel")
     public String testModel(Model model) {
         model.addAttribute("testModel", "this is test scope by Model");
+        System.out.println(model.getClass().getName());
         return "success";
     }
 
     @RequestMapping("/testMap")
     public String testMap(Map<String, Object> map) {
         map.put("testMap", "this is test scope by Map");
+        System.out.println(map.getClass().getName());
         return "success";
     }
 
     @RequestMapping("/testModelMap")
     public String testModelMap(ModelMap modelMap) {
         modelMap.addAttribute("testModelMap", "this is test scope by ModelMap");
+        System.out.println(modelMap.getClass().getName());
         return "success";
     }
 }
